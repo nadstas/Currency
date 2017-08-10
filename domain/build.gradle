@@ -1,0 +1,14 @@
+apply plugin: 'java'
+
+dependencies {
+	implementation fileTree(include: ['*.jar'], dir: 'libs')
+	testImplementation 'junit:junit:4.12'
+	testImplementation 'org.assertj:assertj-core:1.7.0'
+}
+
+sourceSets {
+	test { java.srcDir file('src/test') }
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
