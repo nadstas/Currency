@@ -1,9 +1,13 @@
 package com.st.domain;
 
+import com.st.domain.functions.Consumer;
 import com.st.domain.interactors.CurrencyInteractor;
+import com.st.domain.repository.CurrencyRepo;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,7 +23,7 @@ class CurrencyInteractorTest
 	@Before
 	public
 	void setUp() {
-		mInteractor = new CurrencyInteractor();
+		mInteractor = new CurrencyInteractor(mockRouter(), mockRepository());
 	}
 
 	@Test
@@ -50,5 +54,65 @@ class CurrencyInteractorTest
 
 		final double result = mInteractor.convertCurrency(byn, amd, 20);
 		assertThat(result).isEqualTo(4902.662780949339);
+	}
+
+	private
+	CurrencyRouter mockRouter() {
+		return (list, onClick) -> {
+		};
+	}
+
+	private
+	CurrencyRepo mockRepository() {
+		return new CurrencyRepo()
+		{
+			@Override
+			public
+			void getAllCurrencies(final Consumer<List<Currency>> consumer) {
+
+			}
+
+			@Override
+			public
+			void loadAllCurrencies(final Consumer<List<Currency>> consumer) {
+
+			}
+
+			@Override
+			public
+			void getPrimaryCurrency(final Consumer<Currency> consumer) {
+
+			}
+
+			@Override
+			public
+			void getSecondaryCurrency(final Consumer<Currency> consumer) {
+
+			}
+
+			@Override
+			public
+			void setPrimaryCurrency(final Currency currency) {
+
+			}
+
+			@Override
+			public
+			void setSecondaryCurrency(final Currency currency) {
+
+			}
+
+			@Override
+			public
+			void setLastValue(final double lastValue) {
+
+			}
+
+			@Override
+			public
+			void getLastValue(final Consumer<Double> consumer) {
+
+			}
+		};
 	}
 }
